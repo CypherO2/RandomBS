@@ -1,4 +1,4 @@
-#pokedex test 1
+#pokedex
 entries = []
 pokenames = []
 typegroup = []
