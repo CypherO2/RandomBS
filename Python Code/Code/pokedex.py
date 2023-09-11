@@ -3,7 +3,7 @@ entries = []
 pokenames = []
 typegroup = []
 gengroup = []
-choices1 = ["1","2","3"]
+choices1 = ["1","2","3","4"]
 choice2 = ["1","2","3","4","5","6"]
 
 with open("Python Code\Code\pokemon.txt", "r") as file:
@@ -80,4 +80,5 @@ while x in range(1,4):
     elif x == 3:
         y = GenSearch()
         x = Menu()
-        
+print("\n\n\n < < < Exiting Program > > > ")
+exit()
