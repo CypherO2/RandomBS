@@ -1,6 +1,7 @@
 #pokedex test 1
 entries = []
 pokenames = []
+typegroup = []
 choices1 = ["1","2","3"]
 
 with open("Python Code\Code\pokemon.txt", "r") as file:
@@ -12,8 +13,12 @@ for el in lst:
     #print(splt_lst)  
 
 for el in entries:
-    print(el[1])
+#    print(el[1])
     pokenames.append(el[1])
+
+for el in entries:
+    print(el[2])
+    typegroup.append(el[2])
 
 def Menu():
     print("+------ Main Menu ------+")
@@ -34,10 +39,24 @@ def PokeSearch():
         Pokemon = Pokemon.capitalize()
         if el in Pokemon:
             P = pokenames.index(el)
-            print("\n > > > #, Name, Type 1, Type 2, Total, HP, Attack, Defense, Sp. Atk, Sp. Def, Speed, Generation, Legendary \n > > >",entries[P])
+            print("\n > > > Poke No., Name, Type 1, Type 2, Total, HP, Atk, Def, Sp.Atk, Sp.Def, Spd, Gen, Legend \n > > >",entries[P],"\n")
             
+def TypeSearch():
+    Type = input("\n Please Choose a MAIN Pokemon Typing to Search From \n\n Warning: This Only Works on the MAIN typings of Pokemon Up to and In Generation 6 \n \n > > > ")
+    while not Type.capitalize() in typegroup:
+        Type = input("\n Please Select a Valid Main Typing \n\n Warning: This Only Works on Pokemon Types Up to and In Generation 6 \n \n > > > ")
+    print("\n")
+    for el in typegroup:
+        Type = Type.capitalize()
+        if el in Type:
+            T = typegroup.index(el)
+            print("\n > > > Poke No., Name, Type 1, Type 2, Total, HP, Atk, Def, Sp.Atk, Sp.Def, Spd, Gen, Legend \n > > >",entries[T])
 
 x = Menu()
 while x in range(1,4):
     if x == 1:
         y = PokeSearch()
+        x = Menu()
+    elif x == 2:
+        y = TypeSearch()
+        
