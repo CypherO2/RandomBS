@@ -7,8 +7,13 @@ with open("Python Code\Code\pokemon.txt", "r") as file:
     lst = file.readlines()
 
 for el in lst:
-    splt_lst = el.split(",")
-    print(splt_lst)      
+    splt_lst = el.strip("\n").split(",")
+    entries.append(splt_lst)
+    #print(splt_lst)  
+
+for el in entries:
+    #print(el[1])
+    pokenames.append(el[1])
 
 def Menu():
     print("+------ Main Menu ------+")
