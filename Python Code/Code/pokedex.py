@@ -2,7 +2,9 @@
 entries = []
 pokenames = []
 typegroup = []
+gengroup = []
 choices1 = ["1","2","3"]
+choice2 = ["1","2","3","4","5","6"]
 
 with open("Python Code\Code\pokemon.txt", "r") as file:
     lst = file.readlines()
@@ -17,14 +19,19 @@ for el in entries:
     pokenames.append(el[1])
 
 for el in entries:
-    print(el[2])
+    #print(el[2])
     typegroup.append(el[2])
 
+for el in entries:
+    #print(el[11])
+    gengroup.append(el[11])
+
 def Menu():
-    print("+------ Main Menu ------+")
+    print("\n+------ Main Menu ------+")
     print("| 1) Search Pokemon     |")
     print("| 2) Search Type        |")
     print("| 3) Search Generation  |")
+    print("| 4) Exit               |")
     print("+-----------------------+")
     choice = input("Please Select One of the Above \n > > > ")
     while not choice in choices1: 
@@ -52,6 +59,16 @@ def TypeSearch():
             T = typegroup.index(el)
             print("\n > > > Poke No., Name, Type 1, Type 2, Total, HP, Atk, Def, Sp.Atk, Sp.Def, Spd, Gen, Legend \n > > >",entries[T])
 
+def GenSearch():
+    Gen = input("\n Please Select a Gen to Choose From \n\n Warning: This only works upto and on Gen 6 \n\n > > > ")
+    while not Gen in choice2:
+        Gen = input("\n Please Select a Valid Generation! \n\n Warning: This only works upto and on Gen 6 \n\n > > > ")
+    for el in gengroup:
+        Gen = Gen.capitalize()
+        if el in Gen:
+            G = gengroup.index(el)
+            print("\n > > > Poke No., Name, Type 1, Type 2, Total, HP, Atk, Def, Sp.Atk, Sp.Def, Spd, Gen, Legend \n > > >",entries[G])
+
 x = Menu()
 while x in range(1,4):
     if x == 1:
@@ -59,4 +76,8 @@ while x in range(1,4):
         x = Menu()
     elif x == 2:
         y = TypeSearch()
+        x = Menu()
+    elif x == 3:
+        y = GenSearch()
+        x = Menu()
         
