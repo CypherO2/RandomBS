@@ -1,11 +1,14 @@
 #pokedex test 1
 entries = []
-choices1 = ["1","2","3","4"]
+pokenames = []
+choices1 = ["1","2","3","4","5"]
 
-file = open("Python Code\Code\pokemon.txt","r")
-for el in file:
-    entry = el.split("\n")
-    entries.append(entry)
+with open("Python Code\Code\pokemon.txt", "r") as file:
+    lst = file.readlines()
+
+for el in lst:
+    splt_lst = el.split(",")
+    print(splt_lst)      
 
 def Menu():
     print("+------ Main Menu ------+")
@@ -17,4 +20,8 @@ def Menu():
     while not choice in choices1: 
         choice = input("Please ONLY Select One of the Above \n > > > ")
     return int(choice)
+
+def PokeSearch():
+    Pokemon = input("\n Please Select a Pokemon \n > > > ")
+
 
