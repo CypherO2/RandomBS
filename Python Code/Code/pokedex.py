@@ -15,14 +15,10 @@ for el in lst:
     #print(splt_lst)  
 
 for el in entries:
-#    print(el[1])
+    #print(el[1])
     pokenames.append(el[1])
-
-for el in entries:
     #print(el[2])
     typegroup.append(el[2])
-
-for el in entries:
     #print(el[11])
     gengroup.append(el[11])
 
