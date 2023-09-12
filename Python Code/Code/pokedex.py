@@ -1,9 +1,18 @@
 #pokedex
+
+def Dic(d, k ,v):
+    if not k in d:
+        d[k] = list()
+    d[k].extend(v)
+    return d
+
 entries = []
+pokenum = []
 pokenames = []
 typegroup = []
 gengroup = []
-choices1 = ["1","2","3","4"]
+Pokedict = {}
+choices1 = ["1","2","3","4","5"]
 choice2 = ["1","2","3","4","5","6"]
 
 with open("Python Code\Code\pokemon.txt", "r") as file:
@@ -14,20 +23,27 @@ for el in lst:
     entries.append(splt_lst)
     #print(splt_lst)  
 
+pokecount = 0
 for el in entries:
     #print(el[1])
-    pokenames.append(el[1])
+    pokenames.append(el[0])
     #print(el[2])
-    typegroup.append(el[2])
+    typegroup.append(el[3])
     #print(el[11])
-    gengroup.append(el[11])
+    gengroup.append(el[10])
+    pokecount += 1
+    Pokedict = Dic(Pokedict, str(pokecount), el)
+#print(Pokedict)
+
+#with open("Python Code\Code\pokemon.txt", "w") as file:
 
 def Menu():
     print("\n+------ Main Menu ------+")
     print("| 1) Search Pokemon     |")
     print("| 2) Search Type        |")
     print("| 3) Search Generation  |")
-    print("| 4) Exit               |")
+    print("| 4) Add Pokemon        |")
+    print("| 5) Exit               |")
     print("+-----------------------+")
     choice = input("Please Select One of the Above \n > > > ")
     while not choice in choices1: 
@@ -65,8 +81,11 @@ def GenSearch():
             G = gengroup.index(el)
             print("\n > > > Poke No., Name, Type 1, Type 2, Total, HP, Atk, Def, Sp.Atk, Sp.Def, Spd, Gen, Legend \n > > >",entries[G])
 
+def PokeAdd():
+    Name = input("Name of the Pokemon \n > > > ")
+
 x = Menu()
-while x in range(1,4):
+while x in range(1,5):
     if x == 1:
         y = PokeSearch()
         x = Menu()
@@ -75,6 +94,9 @@ while x in range(1,4):
         x = Menu()
     elif x == 3:
         y = GenSearch()
+        x = Menu()
+    elif x == 4:
+        y = PokeAdd()
         x = Menu()
 print("\n\n\n < < < Exiting Program > > > ")
 exit()
