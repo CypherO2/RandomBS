@@ -798,3 +798,4 @@ DiancieMega Diancie,Rock,Fairy,700,50,160,110,160,110,110,6,True
 HoopaHoopa Confined,Psychic,Ghost,600,80,110,60,150,130,70,6,True
 HoopaHoopa Unbound,Psychic,Dark,680,80,160,60,170,130,80,6,True
 Volcanion,Fire,Water,600,80,110,120,130,90,70,6,True
+Azathoth,Dark,Flying,1032,233,180,160,213,123,123,3,True

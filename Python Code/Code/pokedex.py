@@ -126,7 +126,9 @@ def PokeAdd():
     total = Total(int(hp),int(Def),int(atk),int(SpDef),int(spatk),int(speed))
     Stats = [Name,Type1,Type2,str(total),hp,atk,Def,SpDef,spatk,speed,Gen,Legendary_Status.capitalize()]
     entries.append(Stats)
-    print(entries)
+    with open("Python Code\Code\pokemon.txt", "a") as file:
+        file.write(Name+","+Type1+","+Type2+","+str(total)+","+hp+","+atk+","+Def+","+SpDef+","+spatk+","+speed+","+Gen+","+Legendary_Status.capitalize())
+    #print(entries)
 
 def Total(Hp, Def, Atk, SpDef, SpAtk, Spd):
     Total = Hp + Def + Atk + SpDef + SpAtk + Spd
