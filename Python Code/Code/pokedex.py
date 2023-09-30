@@ -1,4 +1,13 @@
 #pokedex
+import sqlite3
+from sqlite3 import Error
+
+conn = None
+try:
+    conn = sqlite3.connect("Python Code/Code/pokemon.db/")
+    print("Connection Successful\nVersion :",sqlite3.version)
+except Error as e:
+    print("Connection Failed:",e)
 
 def Dic(d, k ,v):
     if not k in d:
