@@ -1,5 +1,6 @@
 import sqlite3
 from sqlite3 import Error
+import pandas as pd
 
 # Used Letters: x
 
@@ -30,35 +31,9 @@ def SearchPokemon(conn, cu):
         check = PokemonNameCheck(conn, cu, inp)
     cu.execute(q, (inp,))
     result = cu.fetchall()
-    for i in result:
-        print(
-            "ID:",
-            i[0],
-            "Name:",
-            i[1],
-            "Type1:",
-            i[2],
-            "Type2:",
-            i[3],
-            "Total:",
-            i[4],
-            "HP:",
-            i[5],
-            "ATK:",
-            i[6],
-            "DEF:",
-            i[7],
-            "SPDEF:",
-            i[8],
-            "SPATK:",
-            i[9],
-            "Speed:",
-            i[10],
-            "Generation:",
-            i[11],
-            "Legendary?:",
-            i[12],
-        )
+    df = pd.DataFrame(result)
+    df.columns = ["ID","Name","Type1","Type2","Total","HP","ATK","DEF","SP DEF","SP ATK","Spd","Gen","Legend?"]
+    print(df)
 
 
 # Checks The Name Against the Database to Prevent Crashes (Input Validation)
@@ -86,35 +61,9 @@ def SearchType(conn, cu):
         check = PokemonTypeCheck(conn, cu, inp)
     cu.execute(q, (inp,))
     result = cu.fetchall()
-    for i in result:
-        print(
-            "ID:",
-            i[0],
-            "Name:",
-            i[1],
-            "Type1:",
-            i[2],
-            "Type2:",
-            i[3],
-            "Total:",
-            i[4],
-            "HP:",
-            i[5],
-            "ATK:",
-            i[6],
-            "DEF:",
-            i[7],
-            "SPDEF:",
-            i[8],
-            "SPATK:",
-            i[9],
-            "Speed:",
-            i[10],
-            "Generation:",
-            i[11],
-            "Legendary?:",
-            i[12],
-        )
+    df = pd.DataFrame(result)
+    df.columns = ["ID","Name","Type1","Type2","Total","HP","ATK","DEF","SP DEF","SP ATK","Spd","Gen","Legend?"]
+    print(df)
 
 
 # Pokemon Type Checker (Input Validation)
@@ -140,35 +89,9 @@ def SearchGen(conn, cu):
         check = PokemonGenCheck(conn, cu, inp)
     cu.execute(q, (int(inp),))
     result = cu.fetchall()
-    for i in result:
-        print(
-            "ID:",
-            i[0],
-            "Name:",
-            i[1],
-            "Type1:",
-            i[2],
-            "Type2:",
-            i[3],
-            "Total:",
-            i[4],
-            "HP:",
-            i[5],
-            "ATK:",
-            i[6],
-            "DEF:",
-            i[7],
-            "SPDEF:",
-            i[8],
-            "SPATK:",
-            i[9],
-            "Speed:",
-            i[10],
-            "Generation:",
-            i[11],
-            "Legendary?:",
-            i[12],
-        )
+    df = pd.DataFrame(result)
+    df.columns = ["ID","Name","Type1","Type2","Total","HP","ATK","DEF","SP DEF","SP ATK","Spd","Gen","Legend?"]
+    print(df)
 
 
 # Pokemon Generation Checker (Input Validation)
@@ -248,7 +171,7 @@ def AddPokemon(conn,cu):
 # Establishes A Connection to the Database
 conn = None
 try:
-    conn = sqlite3.connect("pokemon.db")
+    conn = sqlite3.connect("Code\pokemon.db")
     print("Connection Successful\nVersion :", sqlite3.version)
 except Error as e:
     print("Connection Failed:", e)
