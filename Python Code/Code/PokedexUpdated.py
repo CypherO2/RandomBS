@@ -14,7 +14,7 @@ def Menu():
     print("| 5) Exit               |")
     print("+-----------------------+")
     c = input("Please Select One of the Above \n > > > ")
-    while not int(c) in range(1, 6):
+    while not c.isnumeric() and not int(c) in range(1, 6):
         choice = input("Please ONLY Select One of the Above \n > > > ")
     return int(c)
 
@@ -248,7 +248,7 @@ def AddPokemon(conn,cu):
 # Establishes A Connection to the Database
 conn = None
 try:
-    conn = sqlite3.connect("Python Code\Code\pokemon.db")
+    conn = sqlite3.connect("pokemon.db")
     print("Connection Successful\nVersion :", sqlite3.version)
 except Error as e:
     print("Connection Failed:", e)
